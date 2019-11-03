@@ -6,7 +6,7 @@
 /*   By: yehuang <yehuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 19:30:02 by yehuang           #+#    #+#             */
-/*   Updated: 2019/10/31 23:57:45 by yehuang          ###   ########.fr       */
+/*   Updated: 2019/11/03 09:18:53 by yehuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,18 @@ static void	rotate_norm(int type, double ang, t_mlx *f, t_coor *coor)
 	z = coor->zf;
 	if (type == 0 || type == 6)
 	{
-		coor->yf = y * cos(ang) + z * sin(ang);
-		coor->zf = -y * sin(ang) + z * cos(ang);
+		coor->yf = y * cos(ang) - z * sin(ang);
+		coor->zf = y * sin(ang) + z * cos(ang);
 	}
 	else if (type == 1 || type == 7)
 	{
-		coor->xf = x * cos(ang) - z * sin(ang);
-		coor->zf = x * sin(ang) + z * cos(ang);
+		coor->xf = x * cos(ang) + z * sin(ang);
+		coor->zf = -x * sin(ang) + z * cos(ang);
 	}
 	else if (type == 2 || type == 8)
 	{
-		coor->xf = x * cos(ang) + y * sin(ang);
-		coor->yf = -x * sin(ang) + y * cos(ang);
+		coor->xf = x * cos(ang) - y * sin(ang);
+		coor->yf = x * sin(ang) + y * cos(ang);
 	}
 }
 
@@ -95,7 +95,7 @@ void		rotate(t_mlx *f, int type, double rad)
 	}
 }
 
-void		chagetype(t_mlx *f)
+/*void		chagetype(t_mlx *f)
 {
 	int		i;
 	int		j;
@@ -117,4 +117,4 @@ void		chagetype(t_mlx *f)
 			f->map[i][j].zf = 0;
 		}
 	}
-}
+}*/

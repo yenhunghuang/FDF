@@ -6,7 +6,7 @@
 /*   By: yehuang <yehuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 19:29:28 by yehuang           #+#    #+#             */
-/*   Updated: 2019/10/31 23:44:03 by yehuang          ###   ########.fr       */
+/*   Updated: 2019/11/03 09:18:49 by yehuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int				key_type(int type, t_mlx *f)
 	if (type == 0 || type == 1 || type == 2 || type == 6 ||
 			type == 7 || type == 8)
 		rotate(f, type, PI / 12);
-	if (type == 44)
-		chagetype(f);
+	//if (type == 44)
+	//	chagetype(f);
 	if (type == 123 || type == 124 || type == 125 || type == 126)
 		shift(f, type, (int)WIN_W * 0.05);
 	if (type == 34)

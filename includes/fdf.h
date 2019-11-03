@@ -6,7 +6,7 @@
 /*   By: yehuang <yehuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 19:46:39 by yehuang           #+#    #+#             */
-/*   Updated: 2019/11/01 00:08:32 by yehuang          ###   ########.fr       */
+/*   Updated: 2019/11/03 09:40:53 by yehuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ typedef struct  s_mlx
     int             min_z;
     t_coor          **map;
     unsigned int    color;
-    float           ang;
+    float           a;
     float           scale;
+    int             judge;
 }               t_mlx;
 
 void    set_standard(t_mlx *f);
@@ -75,7 +76,6 @@ void	rotate(t_mlx *f, int mode, double rad);
 void	shift(t_mlx *f, int k, int unit);
 void	instructions(t_mlx *f);
 void	scale(t_mlx *f, int type, double sc);
-void    drawline(t_mlx *f);
 int		mouse_handler(int button, int x, int y, t_mlx *f);
 int     give_right_deltaxy(int *x0, int *y0, int *x1, int *y1);
 void    chagetype(t_mlx *f);

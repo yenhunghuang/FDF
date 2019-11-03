@@ -6,7 +6,7 @@
 /*   By: yehuang <yehuang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 19:31:06 by yehuang           #+#    #+#             */
-/*   Updated: 2019/11/01 00:02:46 by yehuang          ###   ########.fr       */
+/*   Updated: 2019/11/03 09:42:02 by yehuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,18 @@ void			camera_calibration(t_mlx *f)
 			s[1] = scale * (f->map[i][j].y - f->map[f->row / 2][f->col / 2].y);
 			s[2] = f->max_z == f->min_z ? 0 :\
 				WIN_L * 0.1 / (f->max_z - f->min_z) * f->map[i][j].z;
-			f->map[i][j].xf = s[0] * cos(f->ang) - s[1] * sin(f->ang) *\
+			/*f->map[i][j].xf = s[0] * cos(f->ang) - s[1] * sin(f->ang) *\
 				cos(f->ang) + s[2] * sin(f->ang) * sin(f->ang);
 			f->map[i][j].yf = s[0] * sin(f->ang) + s[1] * cos(f->ang) *\
 				cos(f->ang) - s[2] * sin(f->ang) * cos(f->ang);
 			f->map[i][j].zf = s[0] * sin(f->ang) + s[2] * cos(f->ang);
+			*/
+			f->map[i][j].xf = cos(f->a)*s[0] * cos(f->a) + s[1] * sin(f->a) *\
+				cos(f->a) - s[2] * sin(f->a) ;
+			f->map[i][j].yf = sin(f->a)*(cos(f->a)*s[2] + sin(f->a)*(sin(f->a)*s[1]+cos(f->a)*s[0]))\
+				+ cos(f->a)*(cos(f->a)*s[1] - sin(f->a)*s[0]);
+			f->map[i][j].zf = -(cos(f->a)*(cos(f->a)*s[2] + sin(f->a)*(sin(f->a)*s[1]+cos(f->a)*s[0]))\
+				- sin(f->a)*(cos(f->a)*s[1] - sin(f->a)*s[2]));
 		}
 	}
 }
@@ -94,7 +101,7 @@ void			set_standard(t_mlx *f)
 	f->min_x = INT_MAX;
 	f->max_y = INT_MIN;
 	f->min_y = INT_MAX;
-	f->ang = PI / 30;
+	f->a = PI / 30;
 	i = -1;
 	while (++i < f->row)
 	{
